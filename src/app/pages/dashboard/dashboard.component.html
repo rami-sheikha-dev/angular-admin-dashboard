@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Dashboard</h2>
+
+  <div class="row mb-4">
+    <div class="col-md-4" *ngFor="let stat of stats">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-body">
+          <h5 class="card-title">
+            <i [class]="'bi ' + stat.icon"></i> {{ stat.title }}
+          </h5>
+          <p class="card-text fs-4">{{ stat.value }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4>Users</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.company?.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 class="mt-5">Revenue Chart</h4>
+<canvas baseChart
+  [datasets]="barChartData"
+  [labels]="barChartLabels"
+  [options]="barChartOptions"
+  [chartType]="barChartType">
+</canvas>
+</div>
